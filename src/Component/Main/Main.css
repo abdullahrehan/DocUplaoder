@@ -1,0 +1,118 @@
+.main-div{
+    flex:1;
+    background-color: floralwhite;
+}
+*{
+    padding: 0px;
+    margin: 0px;
+}
+.submit-form-container{
+    flex-direction:column;
+    background-color: gainsboro;
+    height: 37%;
+    width: 75%; 
+    border-radius: 5px;
+    padding: 0px;
+    margin: 0px;
+    box-shadow: rgb(136 165 191 / 48%) 6px 2px 16px 0px, rgb(255 255 255 / 80%) -6px -2px 16px 0px;
+}
+ 
+.upload-text{
+    height: 15%;
+}
+.submit-input-field{
+    flex-grow: 1;
+    height: 85%;
+    padding: 0px;
+}
+.submit-button{
+    position: absolute;
+    width: 250px;
+    left: 0px;
+}
+.cross-icon{
+    cursor: pointer;
+}
+.word-upload-image{
+
+}
+.display-upload-section{
+        height: 88vh;
+        width: 88vh;
+        position: fixed;
+        right: 2%;
+        top: 8%;
+}
+.document-display-div {
+    background-color: gainsboro;
+    height: 88vh;
+    width: 88vh;
+    border-radius: 5px;
+    padding: 0px;
+    margin: 0px;
+    box-shadow: rgb(136 165 191 / 48%) 6px 2px 16px 0px, rgb(255 255 255 / 80%) -6px -2px 16px 0px;
+    overflow: auto;
+    position: absolute; 
+    padding: 1% 0% 0% 2%;
+    right: 0%;
+    top: 0%;
+}
+.file-load-loader{
+    height: 88vh;
+    width: 88vh;
+    position: absolute;
+    right: 0%;
+    top: 0%;
+    /* background-color: #0005; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+.loader{
+    width: 15%;
+    background-color:gainsboro ;
+}
+
+.document-display-div::-webkit-scrollbar{
+
+    border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    background-color: #555;
+    cursor: pointer;
+
+}
+
+.document-display-div::-webkit-scrollbar-track{
+
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	border-radius: 10px;
+	background-color: #F5F5F5;
+    cursor: pointer;
+
+}
+
+.document-display-div::-webkit-scrollbar-thumb{
+
+    border-radius: 6px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: #555;
+    cursor: pointer;
+
+}
+
+.document-display-div::-webkit-scrollbar {
+    
+    width: 10px;
+    height: 10px;
+    cursor: pointer;
+
+}
+
+
+.uploaded-document-name{
+    font-family: cursive;
+    font-size: 1.2rem;
+    border-bottom: 1px solid black;
+    margin-bottom: 1%;
+}

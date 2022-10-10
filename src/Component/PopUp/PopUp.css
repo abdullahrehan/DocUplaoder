@@ -1,0 +1,40 @@
+.PopUp-main-div{
+    width: 100vw;
+    height: 100vh;
+    background-color: #0008;
+    position: absolute;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+filter: blur(00px);
+
+}
+.PopUp-div{
+    width: 16rem;
+    height: 9rem;
+    background-color: antiquewhite;
+    border-radius: 5px;
+
+}
+
+
+@media only screen and (min-width: 600px) {
+    /* For tablets: */
+    .PopUp-div{
+        width: 18rem;
+        height: 10rem;
+        background-color: antiquewhite;
+        border-radius: 5px;
+    
+    } }
+  @media only screen and (min-width: 768px) {
+    /* For desktop: */
+    .PopUp-div{
+        width: 25rem;
+        height: 12rem;
+        background-color: antiquewhite;
+        border-radius: 5px;
+    
+    }
+  }
