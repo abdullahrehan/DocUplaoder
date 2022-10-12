@@ -116,3 +116,29 @@
     border-bottom: 1px solid black;
     margin-bottom: 1%;
 }
+.file-not-available{
+    height: 88vh;
+    width: 88vh;
+    position: absolute;
+    right: 0%;
+    top: 0%;
+    /* background-color: #0005; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    border-radius: 5px;
+    box-shadow: rgb(136 165 191 / 48%) 6px 2px 16px 0px, rgb(255 255 255 / 80%) -6px -2px 16px 0px;
+    background-color: gainsboro;
+
+}
+.upload-icon-img{
+    height: 40%;
+}
+.file-not-available-text{
+    font-size: larger;
+    font-family: unset;
+    color: dimgrey;
+    font-weight: 500;
+
+}

@@ -5,6 +5,7 @@ mongoose.connect(process.env.MONGODB_URI ||
 
 const Schema=new mongoose.Schema({
     doc:Object,
+    name:String,
   
 })
  
