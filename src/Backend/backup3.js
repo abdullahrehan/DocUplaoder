@@ -30,7 +30,7 @@ function Main() {
         axios.get('http://localhost:3100')
             .then(response => {
                 if (response.data.status == "ok") {
-                    setFile(response.data.content[0].doc);
+                    setFile(response.data.content);
                     setfileloadLoader(false)
                 }
                 else {
@@ -69,7 +69,7 @@ function Main() {
 
     const uploadWordImages=async()=>{
 
-        const uploadDiv=documentDisplayDiv.current
+        const uploadDiv=document.getElementsByClassName("document-display-div")[0];
         const images =uploadDiv.getElementsByTagName('img');
         
         console.log(documentDisplayDiv.current);
@@ -117,6 +117,7 @@ function Main() {
 
             if(res.status==200){
                 setTimeout(() => {
+                    console.log(res.data.content);
                     setFile(res.data.content)
                     setRefreshPage(refreshPage+1)
                     uploadWordImages(e)                        
@@ -141,8 +142,11 @@ function Main() {
             .then((response) => {
                 if(response.data==="ok"){
                     setDocumentationAvailable(true);
-                    setfileloadLoader(true)
+                    setfileloadLoader(true);
+                    setTimeout(() => {
                         docToHtml(e);                                           
+                        
+                    }, 2000);
                 };
             })            
             .catch(error=> console.log(error.response) )
@@ -179,71 +183,8 @@ function Main() {
         if (file != null) { setuploadFile(true) }
         setwordFile(e.target.files[0])
         console.log(e.target.files[0]);
+        // console.log(e.target.files[0].getObjectPart("word/header1.xml").text());
     }
-
-    const SaveLinks=(text)=>{
-
-        const updatedText=text.split("\t")[1]
-        const file=document.getElementsByClassName("document-display-div")[0];
-        const a=file.getElementsByTagName("a")
-        const b=file.getElementsByTagName("strong")
- 
- 
-        for (let i = 0; i < a.length; i++) {
-
-            const textArray=a[i].innerText.trim().split("\t")[0].split(" ");
-            const y=[]
-            for (let x = 1; x < textArray.length-1; x++) {
-                y.push(textArray[x]);
-                
-            }
-            const z=y.join(" ");
-
-
-            if(z==updatedText){
-
-                let cond;
-                for (let q = i; q < q+10; q++) {
-                   cond=parseInt(a[q+1].parentElement.nextSibling.firstChild.innerText.split('.')[0])==a[i].innerText.split(" ")[0];
-                    if(!cond){
-                        console.log(a[q+1]);
-                        break;
-                    }
-                    
-                }
-                
-                break;                
-                
-            }           
-        }
-   
-
-        for (let j = 0; j < b.length; j++) {
-
-            if(b[j].textContent.trim()==updatedText.trim().toUpperCase()){
-                console.log(b[j].parentElement);
-                console.log(b[j].parentElement.nextSibling);
-
-                b[j].scrollIntoView()
-                break;
-            }           
-        }
-
-
-    }
-
-    if(file!==undefined){
-        document.getElementsByClassName("document-display-div")[0].addEventListener('click', function(e) {
-        e = e || window.event;
-        var target = e.target || e.srcElement,
-            text = target.textContent || target.innerText;   
-            if(target.tagName=="A"){   
-                SaveLinks(text)
-            }
-
-        }, false);
-    }
-    console.log(file!==undefined);
 
     useEffect(() => {
         showDocumentation();
@@ -278,7 +219,6 @@ function Main() {
                                     </div>
                                     <div className='d-flex justify-content-center align-items-center' style={{ width: "100%", paddingTop: "3%" }}>
                                         <button className='btn btn-primary' onClick={(e) => submit(e)}>Upload</button>
-                                        {/* <button className='btn btn-primary' onClick={() => SaveLinks()}>Save Link</button> */}
                                     </div>
                                 </div>
 
@@ -301,8 +241,6 @@ function Main() {
                         </div>
                     </div>
 
-                   
-
                     <div className='col-md-6 d-flex align-items-center flex-column' style={{ paddingTop: "1%" }}>
                         <div className='uploaded-document-name'> Document  </div>
 
@@ -311,14 +249,14 @@ function Main() {
 
                     <div className="display-upload-section">
                         <div className="file-load-loader" style={{ display: fileloadLoader ? "flex" : "none" }}><img src={loaderPic} className="loader" /></div>
-                        {DocumentationAvailable ?
+                        {/* {DocumentationAvailable ? */}
                             <div className='document-display-div' dangerouslySetInnerHTML={{ __html: file }} ref={documentDisplayDiv}></div>
-                            : 
-                         <div className='file-not-available'>
+                            {/* :  */}
+                         {/* <div className='file-not-available'>
                                 <img src={UplaodIcon} className="upload-icon-img" />
                                 <span className='file-not-available-text'>No Documentation is Available<br />
-                                    Upload a new one</span></div>
-                        } 
+                                    Upload a new one</span></div> */}
+                        {/* }  */}
                     </div>
                     
                 </div>

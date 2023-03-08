@@ -5,6 +5,10 @@ const mammoth = require("mammoth");
 const cors = require('cors');
 const fs = require('fs');
 
+// const WordExtractor = require("word-extractor"); 
+// const extractor = new WordExtractor();
+// const extracted = extractor.extract("./Uploads/Documentation.docx");
+
 app.use((req,res,next)=>{
 res.header("Access-Control-Allow-Origin","*");
 res.header(
@@ -29,7 +33,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }))
 
 const port = 3100
-const path = './Uploads/Documentation.docx';
 
 
 // -------- Show Data from MongoDb ----------- //
@@ -43,23 +46,20 @@ app.get('/', (req, res) => {
     res.send({ status: "ok", content: data })
   })
 
+  // extracted.then(function(doc) { 
+  //   console.log(doc.getHeaders());
+  //   res.send({ status: "ok", content: doc.getBody({includeHeadersAndFooters:true})})
+  // });
 })
-
-
-app.get('/savelinks', (req, res) => {
-  
-  Model.find({name:"admin3"},(err, data) => {
-    res.send({ status: "ok", content: data })
-  })
-
-})
-
 
 app.post('/deleteDocumentation', (req, res) => {
 
   console.log(req.body);
   console.log(req.body.data);
   console.log("/deleteDocumentation");
+
+  const path = './Uploads/Documentation.docx';
+
   
   Model.findOneAndDelete({name:"admin3"},(err, data) => {
     fs.unlink(path, (err) => {
@@ -88,6 +88,8 @@ app.post('/deleteDocumentation', (req, res) => {
 app.get('/checkdocument', (req, res) => {
 
   console.log('/checkdocument');
+
+  const path = './Uploads/Documentation.docx';
 
 
   if (fs.existsSync(path)) {
@@ -165,7 +167,7 @@ app.post('/savedoc', async (req, res) => {
 app.post("/uploads",Multer.array("file", 10),async (req, res) => {
 
   console.log("/uploads");
-  // console.log(req.body.uploadedFile);
+  console.log(req.body.uploadedFile);
   const imagesLinks = []
       Promise.all(req.body.uploadedFile.map(async (data, index) => { 
         const result = await cloudinary.uploader.upload(data)

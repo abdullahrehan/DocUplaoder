@@ -2,7 +2,7 @@ import React from 'react'
 import crossIcon from '../Pics/crossIcon.png'
 import './PopUp.css'
 
-function PopUp({deletePopup,setdeletePopup}) {
+function PopUp({deletePopup,setdeletePopup,DeleteDocumentation}) {
   return (
     <div className='PopUp-main-div' style={{display:deletePopup?"block":"none"}}>
 
@@ -22,7 +22,7 @@ function PopUp({deletePopup,setdeletePopup}) {
           </div>
 
           <div className='d-flex justify-content-center' style={{height:"20%"}}>
-            <button className='btn btn-danger' style={{width:"30%",paddingBottom:"2%"}}>Delete</button>
+            <button className='btn btn-danger' style={{width:"30%",paddingBottom:"2%"}} onClick={DeleteDocumentation}>Delete</button>
           </div>
 
 

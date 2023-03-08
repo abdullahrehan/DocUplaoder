@@ -57,17 +57,18 @@
     right: 0%;
     top: 0%;
 }
-.file-load-loader{
+.file-load-loader {
     height: 88vh;
     width: 88vh;
     position: absolute;
     right: 0%;
     top: 0%;
-    /* background-color: #0005; */
+    background-color: #dcdcdc;
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 1;
+    border-radius: 3px;
 }
 .loader{
     width: 15%;
